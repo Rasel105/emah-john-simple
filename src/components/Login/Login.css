@@ -84,5 +84,6 @@
      border-radius: 5px;
      font-size: 17px;
      color: #2A414F;
-     font-family: 'Lato'
+     font-family: 'Lato';
+     cursor: pointer;
 }

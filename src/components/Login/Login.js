@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -16,6 +16,9 @@ const Login = () => {
           loading,
           error,
      ] = useSignInWithEmailAndPassword(auth);
+
+     const [signInWithGoogle] = useSignInWithGoogle(auth);
+
      const location = useLocation();
      const from = location.state?.from?.pathname || "/";
      const handleEmailBlur = event => {
@@ -33,6 +36,11 @@ const Login = () => {
           event.preventDefault();
           signInWithEmailAndPassword(email, password);
      }
+
+     const googleSignIn = () => {
+          signInWithGoogle();
+     }
+
 
      return (
           <div className='form-container'>
@@ -58,7 +66,7 @@ const Login = () => {
                          <Link className='form-link' to="/signup">Create New Account</Link>
                     </p>
                     <p className='or'>or</p>
-                    <p className='google-link'>
+                    <p onClick={googleSignIn} className='google-link'>
                          <img src="https://cdn2.hubspot.net/hubfs/53/image8-2.jpg" alt="" />
                          <p>Continue with Google</p>
                     </p>

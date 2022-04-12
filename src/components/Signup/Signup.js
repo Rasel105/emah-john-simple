@@ -8,7 +8,8 @@ const Signup = () => {
      const [password, setPassword] = useState('');
      const [confirmPassword, setConfirmPassword] = useState('');
      const [error1, setError] = useState('');
-     const navigate = useNavigate('')
+     const navigate = useNavigate('');
+
      const [createUserWithEmailAndPassword, error, user] = useCreateUserWithEmailAndPassword(auth);
 
 
